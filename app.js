@@ -6,6 +6,6 @@ const PORT = process.env.PORT || 9000
 
 app.use(express.static('dist'))
 
-app.listen(PORT, '0.0.0.0', () => {
+app.listen(PORT, () => {
   console.log('server started on port 9000')
 })
