@@ -6,7 +6,7 @@ module.exports = defineConfig({
       // implement node event listeners here
     },
     video: false,
-    pageLoadTimeout: 10000
+    pageLoadTimeout: 100000
   },
 
   component: {
