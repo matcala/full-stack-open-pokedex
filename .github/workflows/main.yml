@@ -15,3 +15,4 @@ jobs:
           heroku_email: "matteo.calabrese1@gmail.com"
           healthcheck: "https://fullstack-cicd-pokedex.herokuapp.com/health"
           checkstring: "ok"
+          delay: 5
