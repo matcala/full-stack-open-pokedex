@@ -10,6 +10,8 @@ jobs:
   simple_deployment_pipeline:
     runs-on: ubuntu-20.04
     steps:
+      - name: check ref
+        run: echo ${{ github.ref }}
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v2
         with:
@@ -28,4 +30,14 @@ jobs:
           command: npm run test:e2e
           start: npm run start-prod
           wait-on: http://localhost:9000
+  tag_release:
+    needs: [simple_deployment_pipeline]
+    if: ${{ github.ref == 'refs/heads/master' }}
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: anothrNick/github-tag-action@1.36.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEFAULT_BUMP: patch
+
 
