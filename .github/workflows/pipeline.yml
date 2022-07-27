@@ -30,7 +30,7 @@ jobs:
           wait-on: http://localhost:9000
   tag_release:
     needs: [simple_deployment_pipeline]
-    if: ${{ github.ref == 'refs/heads/master' }}
+    if: ${{ github.ref == 'refs/heads/master' && !contains(github.event.head_commit.message, '#skip') }}
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
